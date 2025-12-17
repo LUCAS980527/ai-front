@@ -1,50 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import ReloadIcon from "../../../public/ReloadIcon";
 
-export function ImageGenerate() {
-  const [file, setFile] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string | null>(null);
+export function ImageReload() {
+  const [image, setImage] = useState<string>(
+  );
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selected = e.target.files?.[0];
-    if (!selected) return;
-
-    setFile(selected);
-    setPreview(URL.createObjectURL(selected));
-  };
-
-  const handleGenerate = () => {
-    if (!file) return;
-
-    setPreview(URL.createObjectURL(file));
+  const handleReload = () => {
+  
+    setImage(`https://picsum.photos/200?${Date.now()}`);
   };
 
   return (
     <div className="flex items-center gap-3">
-      <Input
-        type="file"
-        accept="image/png, image/jpeg"
-        onChange={handleChange}
+      <img
+        src={image}
+        alt="preview"
+        className="h-20 w-20 rounded-md border object-cover"
       />
 
-      <Button
-        onClick={handleGenerate}
-        disabled={!file}
-        className="w-fit border"
+      <button
+        onClick={handleReload}
+        className="flex h-10 items-center justify-center gap-2 rounded-md border border-[#E4E4E7] bg-white px-4 py-2 hover:opacity-100 opacity-50 transition"
       >
-        Generate
-      </Button>
-
-      {preview && (
-        <img
-          src={preview}
-          alt="preview"
-          className="h-20 w-20 rounded-md object-cover border"
-        />
-      )}
+        <ReloadIcon />
+      </button>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import StarIcon from "../../public/StarIcon";
 import ReloadIcon from "../../public/ReloadIcon";
 import { ImageUpload } from "./_components/uploadImage";
+import { IngredientRecognition } from "./_components/ingredients";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
             <TabsTrigger
               value="ingredient"
               className="flex items-center justify-center px-3 py-1 gap-2.5 rounded-md bg-muted opacity-50 cursor-pointer"
+
             >
               Ingredient recognition
             </TabsTrigger>
@@ -45,8 +47,10 @@ export default function Home() {
             </button>
           </div>
 
+
           <TabsContent value="analysis" className="mt-6 space-y-4">
-            <ImageUpload />
+            
+            <ImageUpload/>
 
             <Button disabled className="w-fit border">
               Generate
@@ -61,6 +65,9 @@ export default function Home() {
               </CardContent>
             </Card>
           </TabsContent>
+          <TabsContent value="ingredient">
+                 <IngredientRecognition />
+             </TabsContent>
         </Tabs>
       </div>
     </div>
