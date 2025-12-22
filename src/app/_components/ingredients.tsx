@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import ReloadIcon from "../../../public/ReloadIcon";
+import StarIcon from "../../../public/StarIcon";
 
 
 export function IngredientRecognition() {
@@ -37,11 +38,12 @@ export function IngredientRecognition() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 flex flex-col ">
  
-      <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-xl font-semibold">✨ Ingredient recognition</h2>
+      <div className="flex justify-between items-center gap-6">
+        <div className="flex flex-col gap-6">
+          <h2 className="text-xl font-semibold flex gap-3">
+            <StarIcon/> Ingredient recognition</h2>
           <p className="text-sm text-muted-foreground">
             Describe the food, and AI will detect the ingredients.
           </p>
@@ -58,14 +60,14 @@ export function IngredientRecognition() {
       <Textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Describe your food..."
+        placeholder="Орц тодорхойлох"
         className="min-h-[140px]"
       />
 
       <Button
         onClick={handleGenerate}
         disabled={!text || loading}
-        className="w-fit"
+        className="w-fit border items-end flex"
       >
         {loading ? "Generating..." : "Generate"}
       </Button>

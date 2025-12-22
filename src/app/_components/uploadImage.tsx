@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 
-export function ImageUpload() {
+type ImageUploadProps = {
+  reset: boolean;
+  onResetDone: () => void;
+};
+
+export function ImageUpload({ reset, onResetDone }: ImageUploadProps) {
   const [preview, setPreview] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -14,9 +20,23 @@ export function ImageUpload() {
     setPreview(url);
   };
 
+  useEffect(() => {
+    if (reset) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setPreview(null);
+
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
+
+      onResetDone();
+    }
+  }, [reset, onResetDone]);
+
   return (
     <div className="flex flex-col gap-3">
       <Input
+        ref={inputRef}
         type="file"
         accept="image/png, image/jpeg"
         onChange={handleChange}
