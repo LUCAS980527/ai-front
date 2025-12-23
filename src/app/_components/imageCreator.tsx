@@ -6,7 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StarIcon from "../../../public/StarIcon";
 import ReloadIcon from "../../../public/ReloadIcon";
-
+import axios from "axios";
+import { BACK_END_URL } from "../_constants/index";
 
 export function FoodImageCreator() {
   const [prompt, setPrompt] = useState("");
@@ -14,14 +15,18 @@ export function FoodImageCreator() {
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
-    if (!prompt.trim()) return;
+    try {
+      setLoading(true);
+      const data = await axios.post(`${BACK_END_URL}/Image-Generator/`, {
+        prompt,
+      });
 
-    setLoading(true);
-
-    setTimeout(() => {
-      setImage(`https://picsum.photos/512?${Date.now()}`);
+      setImage(data.data.image);
+    } catch (err) {
+      console.log(err);
+    } finally {
       setLoading(false);
-    }, 1200);
+    }
   };
 
   const handleReload = () => {
@@ -33,7 +38,7 @@ export function FoodImageCreator() {
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div className="flex gap-2 items-center">
-          <StarIcon/>
+          <StarIcon />
           <h1 className="text-xl font-semibold">Food image creator</h1>
         </div>
 
@@ -58,17 +63,15 @@ export function FoodImageCreator() {
 
       <Button
         onClick={handleGenerate}
-        disabled={!prompt || loading}
-        className="w-fit"
+        disabled={!prompt.trim || loading}
+        className="w-fit border items-end flex"
       >
         {loading ? "Generating..." : "Generate"}
       </Button>
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            🖼 Result
-          </CardTitle>
+          <CardTitle className="flex items-center gap-2">🖼 Result</CardTitle>
         </CardHeader>
         <CardContent className="text-muted-foreground">
           {!image && "First, enter your text to generate an image."}
