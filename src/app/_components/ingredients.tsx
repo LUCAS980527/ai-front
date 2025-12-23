@@ -11,9 +11,7 @@ import { BACK_END_URL } from "../_constants";
 
 export function IngredientRecognition() {
   const [text, setText] = useState("");
-
   const [result, setResult] = useState<string[]>([]);
-
   const [loading, setLoading] = useState(false);
 
   // const handleGenerate = async () => {
@@ -64,7 +62,6 @@ export function IngredientRecognition() {
   const handleReload = () => {
     setText("");
   };
-  console.log("result", result);
   return (
     <div className="space-y-6 flex flex-col ">
       <div className="flex justify-between items-center gap-6">

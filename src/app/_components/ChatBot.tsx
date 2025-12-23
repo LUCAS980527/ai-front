@@ -53,6 +53,7 @@ export default function ChatButton() {
           sender: "assistant",
         },
       ]);
+      console.log(data);
     } catch (error) {
       console.error("API Error:", error);
 
