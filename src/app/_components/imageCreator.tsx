@@ -44,7 +44,7 @@ export function FoodImageCreator() {
 
         <button
           onClick={handleReload}
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background opacity-50 hover:opacity-100 transition"
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background opacity-50 hover:opacity-100 transition cursor-pointer"
         >
           <ReloadIcon />
         </button>
@@ -63,8 +63,11 @@ export function FoodImageCreator() {
 
       <Button
         onClick={handleGenerate}
-        disabled={!prompt.trim || loading}
-        className="w-fit border items-end flex"
+        disabled={!prompt.trim() || loading}
+        className=" w-fit 
+    bg-black text-white border border-black cursor-pointer
+    hover:bg-black
+    disabled:bg-white disabled:text-black disabled:cursor-not-allowed"
       >
         {loading ? "Generating..." : "Generate"}
       </Button>

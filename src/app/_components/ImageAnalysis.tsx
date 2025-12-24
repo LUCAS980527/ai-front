@@ -43,8 +43,8 @@ export default function ImageAnalysis() {
       );
       console.log("response", response);
 
-      console.log("response.data.data.", response.data.data.content);
       setAnalysisResult(response.data.data.content);
+      console.log("response.data.data.", response.data.data.content);
     } catch (err) {
       console.log(err);
       setAnalysisResult("Failed to analyze image.");
@@ -76,7 +76,7 @@ export default function ImageAnalysis() {
           </h1>
         </div>
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background opacity-50 hover:opacity-100 transition"
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background opacity-50 hover:opacity-100 transition cursor-pointer"
           onClick={handleReload}
         >
           <ReloadIcon />
@@ -102,7 +102,10 @@ export default function ImageAnalysis() {
       )}
 
       <Button
-        className="w-fit border"
+        className=" w-fit 
+    bg-black text-white border border-black cursor-pointer
+    hover:bg-black
+    disabled:bg-white disabled:text-black disabled:cursor-not-allowed"
         onClick={handleGenerate}
         disabled={!preview || loading}
       >

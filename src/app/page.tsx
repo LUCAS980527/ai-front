@@ -12,22 +12,45 @@ export default function Home() {
       </div>
       <div className="flex  w-[540px] h-[888px]">
         <Tabs defaultValue="analysis" className="w-full flex flex-col gap-3">
-          <TabsList className="w-full h-9 rounded-lg p-1 opacity-100 bg-muted flex  border justify-around">
+          <TabsList className="w-full h-9 rounded-lg p-1 bg-gray-100 flex border justify-around">
             <TabsTrigger
               value="analysis"
-              className="flex items-center justify-center px-3 py-1 gap-2.5 rounded-md bg-white opacity-50 cursor-pointer "
+              className="
+      flex items-center justify-center px-3 py-1 gap-2.5 rounded-md
+      bg-white opacity-50 cursor-pointer
+      hover:border hover:border-gray
+      data-[state=active]:border
+      data-[state=active]:border-gray-200
+      data-[state=active]:opacity-100
+    "
             >
               Image analysis
             </TabsTrigger>
+
             <TabsTrigger
               value="ingredient"
-              className="flex items-center justify-center px-3 py-1 gap-2.5 rounded-md bg-white opacity-50 cursor-pointer"
+              className="
+      flex items-center justify-center px-3 py-1 gap-2.5 rounded-md
+      bg-white opacity-50 cursor-pointer
+      hover:border hover:border-gray
+      data-[state=active]:border
+      data-[state=active]:border-gray-200
+      data-[state=active]:opacity-100
+    "
             >
               Ingredient recognition
             </TabsTrigger>
+
             <TabsTrigger
               value="creator"
-              className="flex items-center justify-center px-3 py-1 gap-2.5 rounded-md bg-white opacity-50 cursor-pointer"
+              className="
+      flex items-center justify-center px-3 py-1 gap-2.5 rounded-md
+      bg-white opacity-50 cursor-pointer
+      hover:border hover:border-gray
+      data-[state=active]:border
+      data-[state=active]:border-gray-200
+      data-[state=active]:opacity-100
+    "
             >
               Image creator
             </TabsTrigger>

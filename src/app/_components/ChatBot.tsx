@@ -75,7 +75,7 @@ export default function ChatButton() {
   return (
     <>
       <button
-        className="fixed bottom-5 right-5 bg-black p-4 rounded-full shadow-lg hover:bg-gray-800 transition z-50"
+        className="fixed bottom-5 right-5 bg-black p-4 rounded-full shadow-lg hover:bg-gray-800 transition z-50 cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         <svg
@@ -99,7 +99,7 @@ export default function ChatButton() {
             <h2 className="text-base font-semibold">Chat assistant</h2>
             <button
               onClick={() => setOpen(false)}
-              className="text-gray-400 hover:text-gray-600"
+              className="text-gray-400 hover:text-gray-600 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
